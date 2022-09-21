@@ -1,0 +1,11 @@
+<div>
+  <%= image_tag @postlmage.get_image %>
+  <p>ショップ名：<%= @postlmage.shop_name %></p>
+  <p>説明：<%= @postlmage.caption %></p>
+  <p>投稿ユーザー画像：<%= image_tag @postlmage.user.get_profile_image(100,100) %></p>
+  <p>ユーザーネーム：<%= @postlmage.user.name %></p>
+  <p>投稿日：<%= @postlmage.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @postlmage.user == current_user %>
+    <%= link_to "削除", postlmage_path(@postlmage), method: :delete %>
+  <% end %>
+</div>
