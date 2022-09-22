@@ -17,12 +17,10 @@ class PostlmagesController < ApplicationController
 
   def show
     @postlmage = Postlmage.find(params[:id])
+    @post_comment = PostComment.new
+
   end
-  
-  def show
-    @postlmage = Postlmage.find(params[:id])
-  end
-  
+
   def destroy
     @postlmage = Postlmage.find(params[:id])
     @postlmage.destroy

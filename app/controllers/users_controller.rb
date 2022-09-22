@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
 
     @user = User.find(params[:id])
-    @post_images = @user.postlmages
+    @postlmages = @user.postlmages
   end
 
   def edit
@@ -14,6 +14,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path
+  end
+  
+  def destroy
+  PostComment.find(params[:id]).destroy
+  redirect_to postlmage_path(params[:post_image_id])
+    
   end
 
 

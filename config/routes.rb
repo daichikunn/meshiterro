@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   root to: "homes#top"
   devise_for :users
 
-  resources :postlmages,only:[:new,:destroy,:create,:index,:show]
+
+  resources :postlmages, only: [:new, :create, :index, :show, :destroy] do
+    resources :post_comments, only: [:create, :destroy]
+  end
 
   get "homes/about",as:"about"
 
