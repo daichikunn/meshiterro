@@ -7,12 +7,15 @@ class PostlmagesController < ApplicationController
   def create
     @postlmage = Postlmage.new(post_image_params)
     @postlmage.user_id = current_user.id
-    @postlmage.save
-    redirect_to postlmages_path
+     if @postlmage.save
+      redirect_to postlmages_path
+    else
+      render :new
+    end
   end
 
   def index
-    @postlmages = Postlmage.all
+    @postlmages = Postlmage.page(params[:page])
   end
 
   def show

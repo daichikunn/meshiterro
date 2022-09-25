@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
     postlmage = Postlmage.find(params[:postlmage_id])
     favorite = current_user.favorites.new(postlmage_id: postlmage.id)
     favorite.save
-    redirect_to postlmage_path(post_image)
+    redirect_to postlmage_path(postmage)
   end
 
   def destroy

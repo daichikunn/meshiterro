@@ -1,4 +1,12 @@
 <h1>画像投稿フォーム</h1>
+<% if @postlmage.errors.any? %>
+  <%= @postlmage.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @postlmage.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
   <%= form_with model:@postlmage do |f| %>
     <h4>画像</h4>
       <%= f.file_field :image,accept:"image/*" %>
